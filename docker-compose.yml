@@ -5,7 +5,7 @@ services:
     environment:
       REDIS_URL: ${REDIS_URL}
       JWT_SECRET: ${JWT_SECRET}
-      DATABASE_URL: ${DATABASE_URL}
+      DATABASE_URL: postgresql://hazem:5125@postgres:5432/links_db
       PORT: ${PORT}
 
     depends_on:
