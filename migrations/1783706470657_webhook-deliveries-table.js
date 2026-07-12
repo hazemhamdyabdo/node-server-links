@@ -51,7 +51,6 @@ export const up = (pgm) => {
     last_attempt_at: {
       type: "timestamptz",
       notNull: false,
-      default: pgm.func("now()"),
     },
     created_at: {
       type: "timestamptz",
