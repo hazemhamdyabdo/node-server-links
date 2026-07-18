@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "migrate": "dotenv -- node-pg-migrate"
+    "migrate": "dotenv -- node-pg-migrate",
+    "dev": "nodemon src/server.js"
   },
   "keywords": [],
   "author": "",

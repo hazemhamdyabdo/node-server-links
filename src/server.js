@@ -1,6 +1,5 @@
-import { pool } from "./db/pool.js";
-import redis from "./lib/redis.js";
 import app from "./app.js";
+import { pool } from "./db/pool.js";
 
 const server = app.listen(process.env.PORT);
 
@@ -15,7 +14,8 @@ const shutdown = async (signal) => {
 
   server.close(async () => {
     await pool.end();
-    await redis.quit();
+    const { default: redis } = await import("./lib/redis.js");
+    redis.quit();
     process.exit(0);
   });
 };

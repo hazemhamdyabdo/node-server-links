@@ -10,12 +10,6 @@ import {
 } from "../../lib/auth.js";
 
 export async function registerUser(body) {
-  if (!body.email?.trim() || !body.password) {
-    const error = new Error("Missing required fields");
-    error.statusCode = 400;
-    throw error;
-  }
-
   const isEmailExcite = await findUserByEmail(pool, body.email);
   if (isEmailExcite.rows.length) {
     const error = new Error("The email already taken");
@@ -43,12 +37,6 @@ export async function registerUser(body) {
 }
 
 export async function loginUser(body) {
-  if (!body.email || !body.password) {
-    const error = new Error("Email or Password incorrect");
-    error.statusCode = 401;
-    throw error;
-  }
-
   const currentUser = await findUserByEmail(pool, body.email);
 
   if (!currentUser.rows.length) {
